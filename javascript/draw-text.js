@@ -8,11 +8,11 @@ $(document).ready(function() {
 	*/
 	drawText = function(text, color, size, font, x, y) {
 		y += size;
-		g_ctx.font = String(size) + "px " + font;
-		g_ctx.fillStyle = color;
+		g_game.ctx.font = String(size) + "px " + font;
+		g_game.ctx.fillStyle = color;
 		
 		for (var i=0; i<text.length; i++) {
-			g_ctx.fillText(String(text[i]), x, y);
+			g_game.ctx.fillText(String(text[i]), x, y);
 			y += size;
 		}
 	};

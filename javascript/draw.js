@@ -1,45 +1,30 @@
 $(document).ready(function() {
 	draw = function() {
-		if (g_win) {
-			g_ctx.fillStyle = "#d0ffd0";
-		} else {
-			g_ctx.fillStyle = "#f0f0f0";
+		g_game.ctx.fillStyle = "#000";
+		g_game.ctx.fillRect(0, 0, g_game.canvasW, g_game.canvasH);
+
+		g_game.ctx.fillStyle = "#fff";
+		g_game.ctx.fillRect(100-g_game.camera.x, 100-g_game.camera.y, 64, 64);
+
+
+		/*g_game.ctx.fillStyle = "#f00";
+		g_game.ctx.fillRect(g_game.player.rx-g_game.player.xOffset, g_game.player.ry-g_game.player.yOffset, 113, 115);*/
+
+		g_game.ctx.save();
+		g_game.ctx.translate(0.5, 0.5);
+
+		g_game.player.draw();
+
+		for (var i=0; i<g_game.bullets.length; i++) {
+			g_game.bullets[i].draw();
 		}
 
-		g_ctx.fillRect(0, 0, g_canvasW, g_canvasH);
-		g_ctx.strokeStyle = "#000";
-		g_ctx.strokeRect(0, 0, g_canvasW, g_canvasH);
+		drawText([
+			"speed: " + String(Math.round(g_game.player.speed*100)/100),
+			"fps: " + String(Math.round(g_game.fps*100)/100),
+			g_game.bullets.length],
+			"#fff", 16, "Times", 3, -1);
 
-		var boxDraw = -1;
-
-		for (var i=0; i<g_boxes.length; i++) {
-			g_boxes[i].draw()
-
-
-			if (g_mouse.x >= g_boxes[i].x && g_mouse.y >= g_boxes[i].y &&
-				g_mouse.x < g_boxes[i].x+g_boxes[i].w && g_mouse.y < g_boxes[i].y+g_boxes[i].h) {
-				boxDraw = i;
-			}
-		}
-
-		var x = "";
-		var y = "";
-		var w = "";
-		var h = "";
-		var id = "";
-
-		if (boxDraw !== -1) {
-			x = String(g_boxes[boxDraw].x);
-			y = String(g_boxes[boxDraw].y);
-			w = String(g_boxes[boxDraw].w);
-			h = String(g_boxes[boxDraw].h);
-			id = String(g_boxes[boxDraw].id);
-		}
-
-		/*drawText(["Mouse X: " + String(g_mouse.x), "Mouse Y: " + String(g_mouse.y), "Mouse Pess: " + String(g_mouseButtons.lp),
-			"Box X: " + x, "Box Y: " + y, "Box W: " + w, "Box H: " + h, "Box ID: " + id], "#000", 16, "Times", 2, 0);*/
-
-		drawText([/*"Mouse X: " + String(g_mouse.x), "Mouse Y: " + String(g_mouse.y),*/
-			"Count: " + String(g_boxCount), "Search: " + String(g_boxSearch)], "#000", 16, "Times", 2, 0);
+		g_game.ctx.restore();
 	};
 })

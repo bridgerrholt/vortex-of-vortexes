@@ -22,6 +22,6 @@ html, body {
 canvas {
 	display: block;
 	/*cursor: none;*/
-	/*cursor: url(../resources/images/cursor-001.gif), auto;*/
+	cursor: url(../resources/images/cursor-000.gif) 4 4, auto;
 }
 
