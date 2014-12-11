@@ -21,13 +21,13 @@ $(document).ready(function() {
 		this.rx = this.x-g_game.camera.x;
 		this.ry = this.y-g_game.camera.y;
 
-		this.collision();
+		this.collision(id);
 	};
 
 	Bullet.prototype.motion = function() {
 		var pos = disDir(this.x, this.y, this.speed, this.dir);
-		this.x = pos.x;
-		this.y = pos.y;
+		this.x = pos.x+Math.floor((Math.random()*9)-4);
+		this.y = pos.y+Math.floor((Math.random()*9)-4);
 	};
 
 	Bullet.prototype.collision = function(id) {

@@ -21,6 +21,7 @@ g_game.keysP = [];			// key press
 
 g_game.player;
 g_game.bullets = [];
+g_game.levelSpheres = [];
 
 g_game.spritesheets = [];
 
@@ -29,6 +30,7 @@ g_game.camera = {};
 
 function Player(){}
 function Bullet(){}
+function LevelSphere(){}
 
 function pointDir(){}
 function pointDis(){}

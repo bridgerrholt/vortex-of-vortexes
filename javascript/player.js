@@ -85,7 +85,7 @@ $(document).ready(function() {
 				if (this.dis >= 5) {								//     if mouse is not in center of circle
 					this.action = 1;								//       just rotate
 				} else {											//     else mouse is in center of circle
-					this.action = 2;								//       don't move or rotate
+					this.action = 0;								//       don't move or rotate
 				}
 			}
 		} else if (g_game.mouseButtons.rd) {						// else if holding rotate button
@@ -132,7 +132,7 @@ $(document).ready(function() {
 		if (this.shootRecharge === 0) {
 			if (this.shooting) {
 				var pos = disDir(this.x, this.y, this.r-10, this.dir);
-				g_game.bullets[g_game.bullets.length] = new Bullet(pos.x, pos.y, 5, this.dir, 7, 0, 1);
+				g_game.bullets[g_game.bullets.length] = new Bullet(pos.x, pos.y, 5, this.dir, 15, 0, 1);
 				console.log(g_game.bullets[g_game.bullets.length-1]);
 
 				this.shootRecharge = this.shootRechargeRate;

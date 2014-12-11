@@ -18,11 +18,15 @@ $(document).ready(function() {
 		for (var i=0; i<g_game.bullets.length; i++) {
 			g_game.bullets[i].draw();
 		}
+		
+		for (var i=0; i<g_game.levelSpheres.length; i++) {
+			g_game.levelSpheres[i].draw();
+		}
 
 		drawText([
 			"speed: " + String(Math.round(g_game.player.speed*100)/100),
 			"fps: " + String(Math.round(g_game.fps*100)/100),
-			g_game.bullets.length],
+			"dis to mouse: " + String(g_game.player.dis)],
 			"#fff", 16, "Times", 3, -1);
 
 		g_game.ctx.restore();

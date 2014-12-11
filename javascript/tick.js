@@ -10,7 +10,11 @@ $(document).ready(function() {
 		g_game.camera.y = g_game.player.y-Math.floor(g_game.canvasH/2);
 
 		for (var i=0; i<g_game.bullets.length; i++) {
-			g_game.bullets[i].update();
+			g_game.bullets[i].update(i);
+		}
+
+		for (var i=0; i<g_game.levelSpheres.length; i++) {
+			g_game.levelSpheres[i].update(i);
 		}
 
 
