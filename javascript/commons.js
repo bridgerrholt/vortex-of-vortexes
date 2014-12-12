@@ -10,6 +10,7 @@ g_game.fps;
 g_game.lastTick;
 g_game.thisTick;
 g_game.gameLoop;
+g_game.speed;
 
 g_game.play = false;
 
@@ -18,6 +19,8 @@ g_game.mouseButtons = {};
 
 g_game.keys = [];
 g_game.keysP = [];			// key press
+
+g_game.backgrounds = [];
 
 g_game.player;
 g_game.bullets = [];

@@ -1,9 +1,10 @@
 $(document).ready(function() {
 	init = function() {
 		g_game.frameRate = 60;
-		g_game.fps = 60;
+		g_game.fps = g_game.frameRate;
 		g_game.lastTick = new Date;
 		g_game.thisTick = new Date;
+		g_game.speed = 60/g_game.frameRate;
 
 		g_game.canvas = document.getElementById('main-canvas'),
 		g_game.ctx = g_game.canvas.getContext('2d');

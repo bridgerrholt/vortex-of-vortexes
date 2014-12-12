@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	loadMedia = function() {
+		g_game.backgrounds[g_game.backgrounds.length] = new Image();
+		g_game.backgrounds[g_game.backgrounds.length-1].src = "resources/images/background-000.png";
+		console.log(g_game.backgrounds);
+
 		var src = "resources/images/sprite-sheet-";
 
 		g_game.spritesheets[g_game.spritesheets.length] = loadSprite (
@@ -13,7 +17,8 @@ $(document).ready(function() {
 			src + "001.png", [
 			[0, 0, 113, 115],
 			[114, 0, 113, 115],
-			[228, 0, 31, 31]]
+			[228, 0, 31, 31],
+			[0, 116, 113, 115]]
 		)
 
 		console.log(g_game.spritesheets[1]);

@@ -1,21 +1,22 @@
 $(document).ready(function() {
-	LevelSphere = function(x, y, r, dir, speed, transSpeed, rotation, sheet, rect) {
+	LevelSphere = function(x, y, r, dis, dir, target, speed, tx, ty, tSpeed, sheet, rect) {
 		this.x = x;									// x position
 		this.y = y;									// y position
 		this.rx = this.x-g_game.camera.x;			// x position on screen (real x)
 		this.ry = this.y-g_game.camera.y;			// y position on screen (real y)
 		this.r = r;									// radius
 		this.dir = dir;								// direction
-		this.speed = speed;							// the current speed
+		this.dis = dis;								// distance from target
 
-		this.transSpeed = transSpeed;				// the speed to get towards rotating player
-		this.transDir = 0;							// the direction to the player
-		this.transX = g_game.player.x;				// x of orbit center position
-		this.transY = g_game.player.y;				// y pf orbit center position
+		this.target = target;						// 0. none  1. player
+		this.speed = speed*g_game.speed;			// the amount of directional change per tick
+
+		this.tSpeed = tSpeed*g_game.speed;			// the speed to get towards rotating player
+		this.tDir = 0;								// the direction to the player
+		this.tx = tx;								// center of orbit x
+		this.ty = ty;								// center of orbit y
 
 		this.active = true;							// if it is active (moving) or not
-		this.rotation = rotation;					// degree change every tick
-		this.rotationAmount = 0;					// amount rotated
 
 		this.xOffset = 5;							// x distance from corner to x area of rotation
 		this.yOffset = 5;							// y distance from corner to y area of rotation
@@ -58,16 +59,34 @@ $(document).ready(function() {
 
 		this.rotationAmount += this.rotation;*/
 
-		this.dir += this.rotation;
-		var pos = disDir(this.transX, this.transY, this.speed, this.dir);
+		var pos;
+
+		if (pointDis(this.tx, this.ty, g_game.player.x, g_game.player.y) <= this.tSpeed) {
+			this.tx = g_game.player.x;
+			this.ty = g_game.player.y;
+		} else {
+			pos = disDir(this.tx, this.ty, this.tSpeed, pointDir(this.tx, this.ty, g_game.player.x, g_game.player.y));
+			this.tx = pos.x;
+			this.ty = pos.y;
+		}
+
+		this.dir += this.speed;
+		pos = disDir(this.tx, this.ty, this.dis, this.dir);
 		this.x = pos.x;
 		this.y = pos.y;
 	};
 
 	LevelSphere.prototype.collision = function(id) {
+		if (pointDis(this.x, this.y, g_game.player.x, g_game.player.y) <= this.r+g_game.player.r) {
+			g_game.player.level++;
+			g_game.player.levelAdjust();
+			g_game.levelSpheres.splice(id, 1);
+		}
 	};
 
 	LevelSphere.prototype.draw = function() {
 		drawObject(this);
+		/*g_game.ctx.fillStyle = "#f00";
+		g_game.ctx.fillRect(this.tx-g_game.camera.x-4, this.ty-g_game.camera.y-4, 9, 9);*/
 	};
 })
