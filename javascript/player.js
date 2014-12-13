@@ -35,11 +35,6 @@ $(document).ready(function() {
 		this.action = 0;									// 0. idle  1. rotating  2. moving  3. moving and rotating
 		this.shooting = false;								// if currently shooting or not
 
-		this.lSide = false;
-		this.uSide = false;
-		this.rSide = false;
-		this.dSide = false;
-
 		this.levelAdjust();
 	};
 
@@ -190,48 +185,6 @@ $(document).ready(function() {
 				pos.y = dSide;
 			}
 		}
-
-		/*if self.x < bo.x+63+63-TEST and self.x > bo.x-63+TEST and self.l_y < bo.y+63+63-TEST and self.l_y > bo.y-63+TEST:
-			if self.x < self.l_x:
-				self.x = bo.x+63+63-TEST
-			elif self.x > self.l_x:
-				self.x = bo.x-63+TEST
-		if self.l_x < bo.x+63+63-TEST and self.l_x > bo.x-63+TEST and self.y < bo.y+63+63-TEST and self.y > bo.y-63+TEST:
-			if self.y < self.l_y:
-				self.y = bo.y+63+63-TEST
-			elif self.y > self.l_y:
-				self.y = bo.y-63+TEST*/
-
-		/*if (pos.x > obj.x-this.r && pos.x < obj.x+obj.w+this.r &&
-			pos.y > obj.y-this.r && pos.y < obj.y+obj.h+this.r) {
-			if (pos.x )
-		}*/
-
-		/*var lSide = (pos.x+this.r >= obj.x && pos.x+this.r <= obj.x+obj.w);
-		var uSide = (pos.y+this.r >= obj.y && pos.y+this.r <= obj.y+obj.h);
-		var rSide = (pos.x-this.r <= obj.x+obj.w && pos.x-this.r >= obj.x);
-		var dSide = (pos.y-this.r <= obj.y+obj.h && pos.y-this.r >= obj.y);
-
-		if ((lSide || rSide) && (uSide || dSide)) {					// collision!
-			if (lSide && pos.x > this.x) {
-				pos.x = obj.x-this.r;
-			} else if (rSide && pos.x < this.x) {
-				pos.x = obj.x+obj.w+this.r;
-			}
-
-			if (uSide && pos.y > this.y) {
-				pos.y = obj.y-this.r;
-			} else if (dSide && pos.y < this.y) {
-				pos.y = obj.y+obj.h+this.r;
-			}
-		}
-
-		this.x = pos.x;
-		this.y = pos.y;
-		this.lSide = lSide;
-		this.uSide = uSide;
-		this.rSide = rSide;
-		this.dSide = dSide;*/
 
 		return pos;
 	};

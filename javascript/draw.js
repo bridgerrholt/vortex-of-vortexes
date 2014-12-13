@@ -40,11 +40,7 @@ $(document).ready(function() {
 		drawText([
 			"speed: " + String(Math.round(g_game.player.speed*100)/100),
 			"fps: " + String(Math.round(g_game.fps*100)/100),
-			"reload: " + String(g_game.player.shootRecharge),
-			"left:" + String(g_game.player.lSide),
-			"up:" + String(g_game.player.uSide),
-			"right:" + String(g_game.player.rSide),
-			"down:" + String(g_game.player.dSide)],
+			"reload: " + String(g_game.player.shootRecharge)],
 			"#fff", 16, "Times", 3, -1);
 
 		g_game.ctx.restore();
