@@ -10,7 +10,6 @@ $(document).ready(function() {
 			src + "000.png", [
 			[0,0,9,9], [0,9,9,9], [9,0,41,41]]
 		)
-
 		console.log(g_game.spritesheets[0]);
 
 		g_game.spritesheets[g_game.spritesheets.length] = loadSprite (
@@ -20,8 +19,17 @@ $(document).ready(function() {
 			[228, 0, 31, 31],
 			[0, 116, 113, 115]]
 		)
-
 		console.log(g_game.spritesheets[1]);
+
+		g_game.spritesheets[g_game.spritesheets.length] = loadSprite (
+			src + "002.png", [
+			[0,0,64,64],[64,0,64,64],[128,0,64,64],
+			[0,64,64,64],[128,64,64,64],
+			[0,128,64,64],[64,128,64,64],[128,128,64,64],
+			[64,64,64,64],
+			[192,0,64,64],[192,64,64,64],[192,128,64,64],[192,192,64,64]]
+		)
+		console.log(g_game.spritesheets[2]);
 
 
 

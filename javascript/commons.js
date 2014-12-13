@@ -25,6 +25,7 @@ g_game.backgrounds = [];
 g_game.player;
 g_game.bullets = [];
 g_game.levelSpheres = [];
+g_game.levelSphereSlots = [];		// walls with level spheres in them
 
 g_game.spritesheets = [];
 
@@ -34,6 +35,7 @@ g_game.camera = {};
 function Player(){}
 function Bullet(){}
 function LevelSphere(){}
+function LevelSphereSlot(){}
 
 function pointDir(){}
 function pointDis(){}
@@ -48,3 +50,4 @@ function drawText(){}
 function drawTextSpec(){}
 function drawObject(){}
 function drawObjectSpec(){}
+function drawSprite(){}

@@ -47,6 +47,8 @@ $(document).ready(function() {
 	};
 
 	Bullet.prototype.collision = function(id) {
+		collision = false;
+
 		if (this.released) {
 			if (!(this.rx >= -100 && this.rx < g_game.canvasW+100 && this.ry >= -100 && this.ry < g_game.canvasH+100)) {
 				g_game.bullets.splice(id, 1);
@@ -56,7 +58,24 @@ $(document).ready(function() {
 				this.released = true;
 			}
 		}
+
+		for (var i=0; i<g_game.levelSphereSlots.length; i++) {
+			collision = this.collideBox(g_game.levelSphereSlots[i]);
+			if (collision) { g_game.levelSphereSlots[i].destroy(i); }
+		}
+
+		if (collision) {
+			g_game.bullets.splice(id, 1);
+		}
 	};
+
+	Bullet.prototype.collideBox = function(obj) {
+		if (this.x > obj.x-this.r && this.x < obj.x+obj.w+this.r &&
+			this.y > obj.y-this.r && this.y < obj.y+obj.h+this.r) {
+			console.log("HIT");
+			return true;
+		}
+	}
 
 	Bullet.prototype.draw = function() {
 		drawObject(this);

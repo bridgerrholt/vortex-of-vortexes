@@ -18,14 +18,16 @@ $(document).ready(function() {
 
 		this.active = true;							// if it is active (moving) or not
 
-		this.xOffset = 5;							// x distance from corner to x area of rotation
-		this.yOffset = 5;							// y distance from corner to y area of rotation
+		this.xOffset = 15;							// x distance from corner to x area of rotation
+		this.yOffset = 15;							// y distance from corner to y area of rotation
 
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
 	};
 
 	LevelSphere.prototype.update = function(id) {
-		this.motion();
+		if (this.target != 0) {
+			this.motion();
+		}
 
 		this.rx = this.x-g_game.camera.x;
 		this.ry = this.y-g_game.camera.y;
@@ -78,8 +80,9 @@ $(document).ready(function() {
 
 	LevelSphere.prototype.collision = function(id) {
 		if (pointDis(this.x, this.y, g_game.player.x, g_game.player.y) <= this.r+g_game.player.r) {
-			g_game.player.level++;
-			g_game.player.levelAdjust();
+			/*g_game.player.level++;
+			g_game.player.levelAdjust();*/
+			g_game.player.levelUp();
 			g_game.levelSpheres.splice(id, 1);
 		}
 	};

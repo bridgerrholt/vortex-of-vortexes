@@ -13,8 +13,8 @@ $(document).ready(function() {
 			}
 		}
 
-		g_game.ctx.fillStyle = "#fff";
-		g_game.ctx.fillRect(-32-g_game.camera.x, 200-g_game.camera.y, 64, 64);
+		/*g_game.ctx.fillStyle = "#fff";
+		g_game.ctx.fillRect(-32-g_game.camera.x, 200-g_game.camera.y, 64, 64);*/
 
 
 		/*g_game.ctx.fillStyle = "#f00";
@@ -32,11 +32,19 @@ $(document).ready(function() {
 		for (var i=0; i<g_game.levelSpheres.length; i++) {
 			g_game.levelSpheres[i].draw();
 		}
+		
+		for (var i=0; i<g_game.levelSphereSlots.length; i++) {
+			g_game.levelSphereSlots[i].draw();
+		}
 
 		drawText([
 			"speed: " + String(Math.round(g_game.player.speed*100)/100),
 			"fps: " + String(Math.round(g_game.fps*100)/100),
-			"reload: " + String(g_game.player.shootRecharge)],
+			"reload: " + String(g_game.player.shootRecharge),
+			"left:" + String(g_game.player.lSide),
+			"up:" + String(g_game.player.uSide),
+			"right:" + String(g_game.player.rSide),
+			"down:" + String(g_game.player.dSide)],
 			"#fff", 16, "Times", 3, -1);
 
 		g_game.ctx.restore();

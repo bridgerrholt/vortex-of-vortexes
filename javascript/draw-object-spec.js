@@ -11,30 +11,32 @@ $(document).ready(function() {
 			g_game.ctx.translate(x, y);
 			g_game.ctx.rotate(dir*(Math.PI/180));
 
+			if (object.hpAble) {
+				var cirDis = 0.08;
+				var cir;
 
-			var cirDis = 0.08
-			var cir;
+				/*if (object.hpPercentage > 100) {
+					var cir = (100-object.hpPercentage)*(2-cirDis)/100
 
-			if (object.hpPercentage > 100) {
-				var cir = (100-object.hpPercentage)*(2-cirDis)/100
+					//ctx.arc(100,75,50,0*Math.PI,MODIFY_ME*Math.PI);
+					// 2 = Full Circle
+					g_game.ctx.beginPath();
+					g_game.ctx.arc(0, 0, object.r-19, cirDis*Math.PI, cir*Math.PI , false);
+					g_game.ctx.strokeStyle = "#fff";
+					g_game.ctx.lineWidth = 4;
+					g_game.ctx.stroke();
+				}*/
+				
 
-				//ctx.arc(100,75,50,0*Math.PI,MODIFY_ME*Math.PI);
-				// 2 = Full Circle
+				cir = (100-object.hpPercentage)*(2-cirDis)/100
+
 				g_game.ctx.beginPath();
-				g_game.ctx.arc(0, 0, object.r-19, cirDis*Math.PI, cir*Math.PI , false);
-				g_game.ctx.strokeStyle = "#fff";
+				g_game.ctx.arc(0, 0, object.r-19, (cirDis-cir)*Math.PI, -cirDis*Math.PI, false);
+				g_game.ctx.strokeStyle = "#0f0";
 				g_game.ctx.lineWidth = 4;
 				g_game.ctx.stroke();
 			}
 			
-
-			cir = (100-object.hpPercentage)*(2-cirDis)/100
-
-			g_game.ctx.beginPath();
-			g_game.ctx.arc(0, 0, object.r-19, cir*Math.PI, -cirDis*Math.PI, false);
-			g_game.ctx.strokeStyle = "#0f0";
-			g_game.ctx.lineWidth = 4;
-			g_game.ctx.stroke();
 
 
 			//console.log("DRAWING");
