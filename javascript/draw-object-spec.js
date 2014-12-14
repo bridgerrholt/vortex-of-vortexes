@@ -28,10 +28,12 @@ $(document).ready(function() {
 				}*/
 				
 
-				cir = (100-object.hpPercentage)*(2-cirDis)/100
+				//cir = (100-object.hpPercentage)*(2-cirDis*2)/100
+				cir = (100-object.hpPercentage)*(2-cirDis*2)/100
 
 				g_game.ctx.beginPath();
-				g_game.ctx.arc(0, 0, object.r-19, (cirDis-cir)*Math.PI, -cirDis*Math.PI, false);
+				//g_game.ctx.arc(0, 0, object.r-19, -(cirDis-cir)*Math.PI, 2/*-cirDis*Math.PI*/, false);
+				g_game.ctx.arc(0, 0, object.r-19, (2-cirDis-cir)*Math.PI, cirDis*Math.PI, true);
 				g_game.ctx.strokeStyle = "#0f0";
 				g_game.ctx.lineWidth = 4;
 				g_game.ctx.stroke();

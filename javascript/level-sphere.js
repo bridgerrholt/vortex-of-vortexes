@@ -21,6 +21,8 @@ $(document).ready(function() {
 		this.xOffset = 15;							// x distance from corner to x area of rotation
 		this.yOffset = 15;							// y distance from corner to y area of rotation
 
+		this.type = 0;								// 0. white basic  1. red health  2. yellow agility  ...
+
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
 	};
 
@@ -82,7 +84,7 @@ $(document).ready(function() {
 		if (pointDis(this.x, this.y, g_game.player.x, g_game.player.y) <= this.r+g_game.player.r) {
 			/*g_game.player.level++;
 			g_game.player.levelAdjust();*/
-			g_game.player.levelUp();
+			g_game.player.levelUp(this.type, this.x, this.y);
 			g_game.levelSpheres.splice(id, 1);
 		}
 	};

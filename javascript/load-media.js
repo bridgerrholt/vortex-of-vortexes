@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	loadMedia = function() {
 		g_game.backgrounds[g_game.backgrounds.length] = new Image();
-		g_game.backgrounds[g_game.backgrounds.length-1].src = "resources/images/background-000.png";
+		g_game.backgrounds[g_game.backgrounds.length-1].src = "resources/images/background-001.png";
 		console.log(g_game.backgrounds);
 
 		var src = "resources/images/sprite-sheet-";
@@ -30,6 +30,12 @@ $(document).ready(function() {
 			[192,0,64,64],[192,64,64,64],[192,128,64,64],[192,192,64,64]]
 		)
 		console.log(g_game.spritesheets[2]);
+
+		g_game.spritesheets[g_game.spritesheets.length] = loadSprite (
+			src + "003.png", [
+			[0,0,55,55], [56,0,75,75], [132, 0, 65, 89]]
+		)
+		console.log(g_game.spritesheets[3]);
 
 
 

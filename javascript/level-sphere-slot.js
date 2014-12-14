@@ -11,6 +11,9 @@ $(document).ready(function() {
 		this.w = w;
 		this.h = h;
 
+		this.xSpawn = Math.floor(w/2);
+		this.ySpawn = Math.floor(h/2);
+
 		this.active = true;							// if it is active (moving) or not
 
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
@@ -21,30 +24,14 @@ $(document).ready(function() {
 		this.ry = this.y-g_game.camera.y;
 	};
 
-	LevelSphereSlot.prototype.motion = function() {
-		var pos = disDir(this.x, this.y, this.speed, this.dir);
-		if (this.released) {
-			this.x = pos.x+Math.floor(((Math.random()*this.vib)-this.vib/2)*100)/100;
-			this.y = pos.y+Math.floor(((Math.random()*this.vib)-this.vib/2)*100)/100;
-
-			this.vib += this.vibInc;
-			if (this.vib >= this.vibMax) {
-				this.vib = this.vibMax;
-			}
-		} else {
-			this.x = pos.x;
-			this.y = pos.y;
-		}
-	};
-
 	LevelSphereSlot.prototype.destroy = function(id) {
-		g_game.levelSpheres.push(new LevelSphere(this.x+this.w/2, this.y+this.h/2, 15, 0, 0, 0, 0, 0, 0, 0, 1, 2));
+		g_game.levelSpheres.push(new LevelSphere(this.x+this.xSpawn, this.y+this.ySpawn, 15, 0, 0, 0, 0, 0, 0, 0, 1, 2));
 
 		g_game.levelSphereSlots.splice(id, 1);
 	};
 
 	LevelSphereSlot.prototype.draw = function() {
 		drawObject(this);
-		drawSprite(this.x+this.w/2-15, this.y+this.h/2-15, 1, 2)
+		drawSprite(this.x+this.xSpawn-15, this.y+this.ySpawn-15, 1, 2);
 	};
 })

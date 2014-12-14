@@ -48,9 +48,10 @@ $(document).ready(function() {
 
 	Bullet.prototype.collision = function(id) {
 		collision = false;
+		collided = false;
 
 		if (this.released) {
-			if (!(this.rx >= -100 && this.rx < g_game.canvasW+100 && this.ry >= -100 && this.ry < g_game.canvasH+100)) {
+			if (!(this.rx >= -500 && this.rx < g_game.canvasW+500 && this.ry >= -500 && this.ry < g_game.canvasH+500)) {
 				g_game.bullets.splice(id, 1);
 			}
 		} else {
@@ -61,10 +62,23 @@ $(document).ready(function() {
 
 		for (var i=0; i<g_game.levelSphereSlots.length; i++) {
 			collision = this.collideBox(g_game.levelSphereSlots[i]);
-			if (collision) { g_game.levelSphereSlots[i].destroy(i); }
+			if (collision) {
+				g_game.levelSphereSlots[i].destroy(i);
+				collided = true;
+			}
 		}
 
-		if (collision) {
+		for (var i=0; i<g_game.levelSphereSlotSpikys.length; i++) {
+			if (!g_game.levelSphereSlotSpikys[i].dead) {
+				collision = this.collideCircle(g_game.levelSphereSlotSpikys[i]);
+				if (collision) {
+					g_game.levelSphereSlotSpikys[i].destroy(i);
+					collided = true;
+				}
+			}
+		}
+
+		if (collided) {
 			g_game.bullets.splice(id, 1);
 		}
 	};
@@ -75,7 +89,16 @@ $(document).ready(function() {
 			console.log("HIT");
 			return true;
 		}
-	}
+		return false;
+	};
+
+	Bullet.prototype.collideCircle = function(obj) {
+		if (pointDis(this.x, this.y, obj.x, obj.y) < this.r+obj.r) {
+			console.log("HIT");
+			return true;
+		}
+		return false;
+	};
 
 	Bullet.prototype.draw = function() {
 		drawObject(this);

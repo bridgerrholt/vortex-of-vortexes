@@ -25,7 +25,10 @@ g_game.backgrounds = [];
 g_game.player;
 g_game.bullets = [];
 g_game.levelSpheres = [];
-g_game.levelSphereSlots = [];		// walls with level spheres in them
+g_game.levelSphereSlots = [];			// walls with level spheres in them
+g_game.levelSphereSlotSpikys = [];		// spiky walls with level spheres in them
+
+g_game.lines = [];
 
 g_game.spritesheets = [];
 
@@ -33,9 +36,14 @@ g_game.camera = {};
 
 
 function Player(){}
+function Sphere(){}
 function Bullet(){}
 function LevelSphere(){}
 function LevelSphereSlot(){}
+function LevelSphereSlotSpiky(){}
+
+function Vector(){}
+function Line(){}
 
 function pointDir(){}
 function pointDis(){}
@@ -46,8 +54,10 @@ function tick(){}
 function getInput(){}
 //function getMousePosition(){}
 function draw(){}
+function drawCircles(){}
 function drawText(){}
 function drawTextSpec(){}
 function drawObject(){}
+function drawObjectRotated(){}
 function drawObjectSpec(){}
 function drawSprite(){}
