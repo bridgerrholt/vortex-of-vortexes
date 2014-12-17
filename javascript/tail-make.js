@@ -24,6 +24,8 @@ $(document).ready(function() {
 
 			drc: dat[0][6],												// current dir
 			drpc: dat[0][5],											// current dirPush
+			xc: dat[0][0],												// current x
+			yc: dat[0][1]												// current y
 		});
 
 		for (var i=1; i<dat.length-1; i++) {
@@ -38,6 +40,8 @@ $(document).ready(function() {
 
 				drc: dat[i][5],
 				drpc: dat[i][4],
+				xc = 0,
+				yc = 0
 			});
 		}
 
@@ -65,7 +69,12 @@ $(document).ready(function() {
 			}
 
 			for (var j=1; j<obj.length-1; j++) {
-				pos1 = disDir(obj[j-1].xc, obj[j-1].yc, obj[j].ds, obj[j-1].drc);
+				pos3 = disDir(obj[j-1].xc, obj[j-1].yc, obj[j].ds, obj[j-1].drc);
+				obj[j].xc = pos3.x;
+				obj[j].yc = pos3.y;
+				pos1 = disDir(pos3.x, pos3.y, obj[j].w, obj[j].drc-90);		// left side
+				pos2 = disDir(pos3.x, pos3.y, obj[j].w, obj[j].drc+90);		// right side
+				poly[i].push(pos1.x)
 
 				directionInc(obj, j);
 			}
@@ -78,17 +87,20 @@ $(document).ready(function() {
 	};
 
 	directionInc = function(obj, i) {
-		if (obj[i].dpc) {
+		if (obj[i].drpc) {
 			obj[i].drc += obj[i].r;
 			if (obj[i].dr2 < obj[i].dr1) {
 				if (obj[i].drc > obj[i].dr2 && obj[i].drc < obj[i].dr1) {
 					obj[i].drc = obj[i].dr2-(obj[i].drc-obj[i].dr2);
+					obj[i].drpc = false;
 				}
 			} else {
 				if (obj[i].drc < obj[i].dr1) {
 					obj[i].drc = obj[i].dr2-(obj[i].drc+(360-obj[i].dr2));
+					obj[i].drpc = false;
 				} else if (obj[i].drc > obj[i].dr2) {
 					obj[i].drc = obj[i].dr2-(obj[i].drc-obj[i].dr2);
+					obj[i].drpc = false;
 				}
 			}
 		} else {
@@ -96,12 +108,15 @@ $(document).ready(function() {
 			if (obj[i].dr2 < obj[i].dr1) {
 				if (obj[i].drc < obj[i].dr1) {
 					obj[i].drc = obj[i].dr1+(obj[i].dr1-obj[i].drc);
+					obj[i].drpc = true;
 				}
 			} else {
 				if (obj[i].drc > obj[i].dr2) {
 					obj[i].drc = obj[i].dr1+(obj[i].dr1+(360-obj[i].drc));
+					obj[i].drpc = true;
 				} else if (obj[i].drc < obj[i].dr1) {
 					obj[i].drc = obj[i].dr1+(obj[i].dr1-obj[i].drc);
+					obj[i].drpc = true;
 				}
 			}
 		}
