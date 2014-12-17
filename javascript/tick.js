@@ -21,6 +21,10 @@ $(document).ready(function() {
 			g_game.levelSphereSlotSpikys[i].update(i);
 		}
 
+		for (var i=0; i<g_game.tails.length; i++) {
+			g_game.tails[i].update();
+		}
+
 
 		draw();
 

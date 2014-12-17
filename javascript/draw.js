@@ -68,6 +68,10 @@ $(document).ready(function() {
 			g_game.ctx.lineTo(g_game.lines[i].x2-g_game.camera.x, g_game.lines[i].y2-g_game.camera.y);
 			g_game.ctx.stroke();
 		}
+
+		for (var i=0; i<g_game.tails.length; i++) {
+			g_game.tails[i].draw();
+		}
 		
 		g_game.player.draw();
 
@@ -75,7 +79,8 @@ $(document).ready(function() {
 			"speed: " + String(Math.round(g_game.player.speed*100)/100),
 			"fps: " + String(Math.round(g_game.fps*100)/100),
 			"reload: " + String(g_game.player.shootRecharge),
-			"hp: " + String(g_game.player.hp) + " / " + String(g_game.player.hpMax) + " " + String(g_game.player.hpPercentage) + "%"],
+			"hp: " + String(g_game.player.hp) + " / " + String(g_game.player.hpMax) + " " + String(g_game.player.hpPercentage) + "%",
+			"dir: " + String(g_game.player.dir)],
 			"#fff", 16, "Times", 3, -1);
 
 		g_game.ctx.restore();

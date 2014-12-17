@@ -22,6 +22,25 @@ $(document).ready(function() {
 		x1 = 100; y1 = -5; x2 = 105; y2 = 200;
 		g_game.lines.push(new Line(x1, y1, x2, y2, g_game.player.r));*/
 
+		var poly = [
+			[-50,-50, -40,-50, -40,-40, -50,-40],
+			[-51,-50, -40,-50, -40,-40, -51,-40],
+			[-52,-50, -40,-50, -40,-40, -52,-40],
+			[-53,-50, -40,-50, -40,-40, -53,-40],
+			[-52,-50, -40,-50, -40,-40, -52,-40],
+			[-51,-50, -40,-50, -40,-40, -51,-40]
+		]
+		g_game.tails.push(new Tail(poly, "#ff0", 5));
+
+		poly = tailMake([
+			[-200,200, 15, 160, 200, true, 180, 1],
+			[100, 12, 150, 210, false, 180, 2],
+			[120, 190]],
+			60, [[],[]]);
+
+		g_game.tails.push(new Tail(poly, "#ff0", 1, true, "#f00"));
+		console.log(g_game.tails);
+
 		g_game.camera = {
 			x: g_game.player.x-Math.floor(g_game.canvasW/2),
 			y: g_game.player.y-Math.floor(g_game.canvasH/2)

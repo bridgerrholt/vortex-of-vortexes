@@ -18,7 +18,7 @@ g_game.mouse = {};
 g_game.mouseButtons = {};
 
 g_game.keys = [];
-g_game.keysP = [];			// key press
+g_game.keysP = [];						// key press
 
 g_game.backgrounds = [];
 
@@ -29,6 +29,7 @@ g_game.levelSphereSlots = [];			// walls with level spheres in them
 g_game.levelSphereSlotSpikys = [];		// spiky walls with level spheres in them
 
 g_game.lines = [];
+g_game.tails = [];
 
 g_game.spritesheets = [];
 
@@ -44,6 +45,9 @@ function LevelSphereSlotSpiky(){}
 
 function Vector(){}
 function Line(){}
+function Tail(){}
+
+function tailMake(){}
 
 function pointDir(){}
 function pointDis(){}
