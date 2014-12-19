@@ -24,6 +24,9 @@ $(document).ready(function() {
 		g_game.ctx.translate(0.5, 0.5);
 
 		drawCircles(0, 0, 1003, 5, [[0, 0, 999, 0, 2, "#050", 10], [0, 0, 994, 0, 2, "#0a0", 2], [0, 0, 1003, 0, 2, "#020", 2]]);
+		for (var i=0; i<g_game.tails.length; i++) {
+			g_game.tails[i].draw();
+		}
 
 		/*g_game.ctx.beginPath();
 		g_game.ctx.arc(-g_game.camera.x, -g_game.camera.y, 999, 0*Math.PI, 2*Math.PI);
@@ -69,9 +72,6 @@ $(document).ready(function() {
 			g_game.ctx.stroke();
 		}
 
-		for (var i=0; i<g_game.tails.length; i++) {
-			g_game.tails[i].draw();
-		}
 		
 		g_game.player.draw();
 

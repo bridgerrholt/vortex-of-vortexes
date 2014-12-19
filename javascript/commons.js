@@ -48,10 +48,13 @@ function Line(){}
 function Tail(){}
 
 function tailMake(){}
+function tailRealMake(){}
 
 function pointDir(){}
 function pointDis(){}
 function disDir(){}
+function roundFloat(){}
+function getLineCircleIntersect(){}
 
 function loadMedia(){}
 function tick(){}

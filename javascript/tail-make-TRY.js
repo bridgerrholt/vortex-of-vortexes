@@ -9,7 +9,6 @@ $(document).ready(function() {
 	tailMake = function(dat, frames, ext) {
 		var obj = [];
 		var poly = [];
-		var polyBack = [];
 		var pos1, pos2, pos3;
 
 			// turn dat[] into objects
@@ -82,60 +81,8 @@ $(document).ready(function() {
 
 			obj = directionInc(obj, 0);*/
 
+
 			if (ext[0].length === 4) {
-				poly[i] = [
-					Math.round(ext[0][2]*100)/100,Math.round(ext[0][3]*100)/100,
-					Math.round(obj[0].x*100)/100, Math.round(obj[0].y*100)/100,
-					Math.round(ext[0][0]*100)/100,Math.round(ext[0][1]*100)/100];
-			} else {
-				pos1 = disDir(obj[0].x, obj[0].y, obj[0].w, obj[0].fr-90);		// left side
-				pos2 = disDir(obj[0].x, obj[0].y, obj[0].w, obj[0].fr+90);		// right side
-				poly[i] = [
-					Math.round(pos1.x*100)/100,
-					Math.round(pos1.y*100)/100,
-					Math.round(pos2.x*100)/100,
-					Math.round(pos2.y*100)/100];
-			}
-
-			var j = 0;
-			obj[j].drrc = obj[j].fr+(obj[j].drc-obj[j].drm);
-			//console.log(obj[j].drrc);
-
-			for (var j=1; j<obj.length-1; j++) {
-				obj[j].drrc = obj[j-1].drrc+(obj[j].drc-obj[j].drm);
-				pos3 = disDir(obj[j-1].xc, obj[j-1].yc, obj[j].ds, obj[j-1].drrc);
-				obj[j].xc = pos3.x;
-				obj[j].yc = pos3.y;
-
-				pos1 = disDir(pos3.x, pos3.y, obj[j].w, obj[j].drrc-90);		// left side
-				pos2 = disDir(pos3.x, pos3.y, obj[j].w, obj[j].drrc+90);		// right side
-				poly[i].push(Math.round(pos2.x*100)/100);
-				poly[i].push(Math.round(pos2.y*100)/100);
-				polyBack.push([]);
-				polyBack[i].splice(0, 0, Math.round(pos1.x*100)/100)
-				polyBack[i].splice(1, 0, Math.round(pos1.y*100)/100)
-
-				//console.log(obj[j].drrc);
-			}
-
-			var j = obj.length-1;
-			pos3 = disDir(obj[j-1].xc, obj[j-1].yc, obj[j].ds, obj[j-1].drrc);
-			obj[j].xc = pos3.x;
-			obj[j].yc = pos3.y;
-			poly[i].push(Math.round(obj[j].xc*100)/100);
-			poly[i].push(Math.round(obj[j].yc*100)/100);
-
-			for (var j=0; j<obj.length-1; j++) {
-				directionInc(obj, j);
-			}
-			/*console.log("real");
-			console.log(obj);*/
-
-
-
-
-
-			/*if (ext[0].length === 4) {
 				poly[i] = [
 					Math.round(ext[0][2]*100)/100,Math.round(ext[0][3]*100)/100,
 					Math.round(obj[0].x*100)/100, Math.round(obj[0].y*100)/100,
@@ -167,23 +114,17 @@ $(document).ready(function() {
 
 			for (var j=0; j<obj.length-1; j++) {
 				directionInc(obj, j);
-			}*/
+			}
 			/*console.log("real");
 			console.log(obj);*/
 			
-		}
-
-		for (var i=0; i<poly.length; i++) {
-			for (var j=0; j<polyBack[i].length; j++) {
-				poly[i].push(polyBack[i][j]);
-			}
 		}
 
 		return poly;
 
 	};
 
-	var directionInc = function(obj, i) {
+	directionInc = function(obj, i) {
 		/*if (obj[i].drpc) {
 			obj[i].drc += obj[i].r;
 			if (obj[i].dr2 < obj[i].dr1) {
@@ -232,7 +173,7 @@ $(document).ready(function() {
 			}
 		}
 
-		//console.log(obj);
+		console.log(obj);
 
 		/*while (obj[i].drc >= 360) {
 			obj[i].drc -= 360;
