@@ -131,8 +131,11 @@ $(document).ready(function() {
 					pos2 = disDir(pos3.x, pos3.y, obj[j].w, obj[j].drrc+90);				// right side
 					polyBack[i].splice(0, 0, roundFloat(pos1.x, 2));
 					polyBack[i].splice(1, 0, roundFloat(pos1.y, 2));
-					poly[i].push(roundFloat(pos2.x, 2));
-					poly[i].push(roundFloat(pos2.y, 2));
+					//if (ext.length !== 0 && j != 1) {
+						poly[i].push(roundFloat(pos2.x, 2));
+						poly[i].push(roundFloat(pos2.y, 2));
+					//}
+
 				} else {
 					poly[i].push(roundFloat(obj[j].xc, 2));
 					poly[i].push(roundFloat(obj[j].yc, 2));
@@ -154,6 +157,8 @@ $(document).ready(function() {
 			}
 		}
 
+		console.log("polyBack");
+		console.log(polyBack);
 		return poly;
 
 	};

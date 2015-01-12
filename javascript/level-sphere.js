@@ -7,6 +7,8 @@ $(document).ready(function() {
 		this.r = r;									// radius
 		this.dir = dir;								// direction
 		this.dis = dis;								// distance from target
+		this.xStart = x;							// x starting position
+		this.yStart = y;							// y starting position
 
 		this.target = target;						// 0. none  1. player
 		this.speed = speed*g_game.speed;			// the amount of directional change per tick
@@ -65,14 +67,29 @@ $(document).ready(function() {
 
 		var pos;
 
-		if (pointDis(this.tx, this.ty, g_game.player.x, g_game.player.y) <= this.tSpeed) {
-			this.tx = g_game.player.x;
-			this.ty = g_game.player.y;
+		if (pointDis(this.xStart, this.yStart, g_game.player.x, g_game.player.y) > g_game.nestSizes[0]*2.5) {
+			console.log("greater");
+			if (this.tx != this.xStart && this.ty != this.yStart) {
+				if (pointDis(this.tx, this.ty, this.xStart, this.yStart) <= this.tSpeed) {
+					this.tx = this.xStart;
+					this.ty = this.yStart;
+				} else {
+					pos = disDir(this.tx, this.ty, this.tSpeed, pointDir(this.tx, this.ty, this.xStart, this.yStart));
+					this.tx = pos.x;
+					this.ty = pos.y;
+				}
+			}
 		} else {
-			pos = disDir(this.tx, this.ty, this.tSpeed, pointDir(this.tx, this.ty, g_game.player.x, g_game.player.y));
-			this.tx = pos.x;
-			this.ty = pos.y;
+			if (pointDis(this.tx, this.ty, g_game.player.x, g_game.player.y) <= this.tSpeed) {
+				this.tx = g_game.player.x;
+				this.ty = g_game.player.y;
+			} else {
+				pos = disDir(this.tx, this.ty, this.tSpeed, pointDir(this.tx, this.ty, g_game.player.x, g_game.player.y));
+				this.tx = pos.x;
+				this.ty = pos.y;
+			}
 		}
+
 
 		this.dir += this.speed;
 		pos = disDir(this.tx, this.ty, this.dis, this.dir);

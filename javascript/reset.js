@@ -110,7 +110,7 @@ $(document).ready(function() {
 		var ext = [pos2.x,pos2.y, pos3.x,pos3.y, pos4.x,pos4.y, pos5.x,pos5.y];
 		ext = [];
 		var dir = 135;
-		for (var i=0; i<8; i++) {
+		/*for (var i=0; i<8; i++) {
 			dir -= 2
 			pos2 = disDir(0,0, 999, dir)
 			ext.push(pos2.x);
@@ -122,7 +122,17 @@ $(document).ready(function() {
 			pos2 = disDir(0,0, 999, dir)
 			ext.push(pos2.x);
 			ext.push(pos2.y);
+		}*/
+
+		dir = 135 - 8*2;
+		for (var i=0; i<16; i++) {
+			dir += 2
+			pos2 = disDir(0,0, 999, dir)
+			ext.push(pos2.x);
+			ext.push(pos2.y);
 		}
+
+		console.log(ext);
 
 		poly = tailRealMake(ext, [
 			[pos1.x, pos1.y, 135, 50, true],

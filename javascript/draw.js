@@ -23,7 +23,7 @@ $(document).ready(function() {
 		g_game.ctx.save();
 		g_game.ctx.translate(0.5, 0.5);
 
-		drawCircles(0, 0, 1003, 5, [[0, 0, 999, 0, 2, "#050", 10], [0, 0, 994, 0, 2, "#0a0", 2], [0, 0, 1003, 0, 2, "#020", 2]]);
+		drawCircles(0, 0, g_game.nestSizes[0], 5, [[0, 0, g_game.nestSizes[0]-4, 0, 2, "#050", 10], [0, 0, g_game.nestSizes[0]-9, 0, 2, "#0a0", 2], [0, 0, g_game.nestSizes[0], 0, 2, "#020", 2]]);
 		for (var i=0; i<g_game.tails.length; i++) {
 			g_game.tails[i].draw();
 		}
@@ -80,7 +80,8 @@ $(document).ready(function() {
 			"fps: " + String(Math.round(g_game.fps*100)/100),
 			"reload: " + String(g_game.player.shootRecharge),
 			"hp: " + String(g_game.player.hp) + " / " + String(g_game.player.hpMax) + " " + String(g_game.player.hpPercentage) + "%",
-			"dir: " + String(g_game.player.dir)],
+			"dir: " + String(g_game.player.dir),
+			"real mouse: " + String(roundFloat(g_game.mouse.x+g_game.camera.x, 2)) + ',' + String(roundFloat(g_game.mouse.y+g_game.camera.y, 2))],
 			"#fff", 16, "Times", 3, -1);
 
 		g_game.ctx.restore();

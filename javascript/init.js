@@ -44,10 +44,27 @@ $(document).ready(function() {
 
 		loadMedia();
 
+		g_game.nestSizes.push(1003)
+
 		reset();
 
 
 		if(typeof g_game.gameLoop != "undefined") clearInterval(g_game.gameLoop);
 		g_game.gameLoop = setInterval(tick, 1000/g_game.frameRate);
+
+		var pos;
+
+		var c_x = 47; var c_y = 47;
+		var dis = 45;
+
+		pos = disDir(c_x,c_y, dis, 0)
+		var t1_x = pos.x; var t1_y = pos.y;
+		pos = disDir(c_x,c_y, dis, 120)
+		var t2_x = pos.x; var t2_y = pos.y;
+		pos = disDir(c_x,c_y, dis, 240)
+		var t3_x = pos.x; var t3_y = pos.y;
+		console.log(String(t1_x) + ", " + String(t1_y));
+		console.log(String(t2_x) + ", " + String(t2_y));
+		console.log(String(t3_x) + ", " + String(t3_y));
 	};
 });

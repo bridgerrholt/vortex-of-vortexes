@@ -35,6 +35,10 @@ g_game.spritesheets = [];
 
 g_game.camera = {};
 
+g_game.nestSizes = [];
+
+var chunks = [];
+
 
 function Player(){}
 function Sphere(){}
@@ -42,6 +46,8 @@ function Bullet(){}
 function LevelSphere(){}
 function LevelSphereSlot(){}
 function LevelSphereSlotSpiky(){}
+
+function TriangleEnemy(){}
 
 function Vector(){}
 function Line(){}
