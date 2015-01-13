@@ -2,7 +2,7 @@ $(document).ready(function() {
 	reset = function() {
 		var level = 0;
 
-		g_game.player = new Player(0, 0, 60, 270, level, 1,0);
+		g_game.player = new Player(-500, 500, 60, 270, level, 1,0);
 
 		if (level === 0) {
 			g_game.levelSpheres.push(new LevelSphere(-50, 0, 15, 400, 0, 1, 1, g_game.player.x, g_game.player.y, 3, 1,2));
@@ -124,15 +124,36 @@ $(document).ready(function() {
 			ext.push(pos2.y);
 		}*/
 
-		dir = 135 - 8*2;
-		for (var i=0; i<16; i++) {
-			dir += 2
+		dir = 135 - 6*1.6;
+		for (var i=0; i<11; i++) {
+			dir += 1.6
 			pos2 = disDir(0,0, 999, dir)
 			ext.push(pos2.x);
 			ext.push(pos2.y);
 		}
 
 		console.log(ext);
+
+		var widths = [];
+		var c = 150;
+		var size = 28;
+		/*for (var i=0; i<28; i++) {
+			if (i <= 5) {
+				c -= 10-i;
+			} else if (i <= 25) {
+				c -= 7;
+			} else {
+				c -= 3;
+			}
+			widths.push(c)
+		}*/
+		for (var i=27; i>=0; i--) {
+			c -= i*i*0.021;
+			if (i === 0) {
+				c = 0.5
+			}
+			widths.push(c);
+		}
 
 		poly = tailRealMake(ext, [
 			[pos1.x, pos1.y, 135, 50, true],
@@ -162,7 +183,8 @@ $(document).ready(function() {
 			[70, 0, 7, 15, spds[22]],
 			[70, 0, 6, 15, spds[23]],
 			[70, 0, 5, 15, spds[24]],
-			[70, 0, 4, 15, spds[25]]], 20);
+			[70, 0, 4, 15, spds[25]]], widths, 20);
+
 
 		g_game.tails.push(new Tail(poly, "#0a0", 20, true, "#050", 135));
 

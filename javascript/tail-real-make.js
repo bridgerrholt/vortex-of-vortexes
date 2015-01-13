@@ -6,7 +6,7 @@ $(document).ready(function() {
 		[x, y, dirReal, width, dirPush], [dis, dir, width, +rotateFieldStart, -rotateFieldEnd, offset, delayPoint]
 	*/
 
-	tailRealMake = function(ext, dat, frames) {
+	tailRealMake = function(ext, dat, widths, frames) {
 		var obj = [];
 		var poly = [];
 		var polyBack = [];
@@ -30,6 +30,10 @@ $(document).ready(function() {
 			drrc: dat[0][2]
 		});
 
+		if (widths.length >= 1) {
+			obj[0].w = widths[0]
+		}
+
 		for (var i=1; i<dat.length; i++) {
 			obj.push({
 				ds: dat[i][0],
@@ -52,6 +56,10 @@ $(document).ready(function() {
 					obj[i].off = -framesQuart-1+(-framesQuart-obj[i].off);
 					obj[i].drpc = true;
 				}
+			}
+
+			if (widths.length >= i+1) {
+				obj[i].w = widths[i]
 			}
 
 			obj[i].drrc = obj[i].drr;
