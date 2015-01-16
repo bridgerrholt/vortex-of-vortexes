@@ -24,6 +24,10 @@ $(document).ready(function() {
 		for (var i=0; i<g_game.tails.length; i++) {
 			g_game.tails[i].update();
 		}
+		
+		for (var i=0; i<g_game.triangleEnemies.length; i++) {
+			g_game.triangleEnemies[i].update();
+		}
 
 
 		draw();

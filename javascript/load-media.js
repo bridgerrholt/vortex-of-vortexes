@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 		g_game.spritesheets[g_game.spritesheets.length] = loadSprite (
 			src + "003.png", [
-			[0,0,55,55], [56,0,75,75], [132, 0, 65, 89]]
+			[0,0,55,55], [56,0,75,75], [132, 0, 65, 89], [0, 76, 95, 95]]
 		)
 		console.log(g_game.spritesheets[3]);
 

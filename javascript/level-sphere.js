@@ -9,6 +9,7 @@ $(document).ready(function() {
 		this.dis = dis;								// distance from target
 		this.xStart = x;							// x starting position
 		this.yStart = y;							// y starting position
+		this.id = g_game.levelSpheres.length;		// object-unique id
 
 		this.target = target;						// 0. none  1. player
 		this.speed = speed*g_game.speed;			// the amount of directional change per tick
@@ -26,6 +27,8 @@ $(document).ready(function() {
 		this.type = 0;								// 0. white basic  1. red health  2. yellow agility  ...
 
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	LevelSphere.prototype.update = function(id) {

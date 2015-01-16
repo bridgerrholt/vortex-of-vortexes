@@ -16,6 +16,9 @@ $(document).ready(function() {
 			this.trace = trace;
 			this.traceColor = traceColor;
 		}
+		
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	Tail.prototype.update = function() {

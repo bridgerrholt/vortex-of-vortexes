@@ -17,6 +17,8 @@ $(document).ready(function() {
 		this.active = true;							// if it is active (moving) or not
 
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	LevelSphereSlot.prototype.update = function(id) {

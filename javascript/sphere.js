@@ -29,6 +29,8 @@ $(document).ready(function() {
 		this.type = 0;										// 0. white basic  1. red health  2. yellow agility  ...
 
 		this.spriteCurrent = [sheet, rect];					// id to current sheet and rect [sheet, rect]
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	Sphere.prototype.update = function() {

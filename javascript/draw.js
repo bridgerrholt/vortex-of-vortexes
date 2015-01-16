@@ -62,6 +62,10 @@ $(document).ready(function() {
 		for (var i=0; i<g_game.levelSphereSlotSpikys.length; i++) {
 			g_game.levelSphereSlotSpikys[i].draw();
 		}
+		
+		for (var i=0; i<g_game.triangleEnemies.length; i++) {
+			g_game.triangleEnemies[i].draw();
+		}
 
 		for (var i=0; i<g_game.lines.length; i++) {
 			g_game.ctx.beginPath();

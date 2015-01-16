@@ -23,7 +23,6 @@ $(document).ready(function() {
 		this.friction = 60/g_game.speed;					// the amount of ticks taken to slow down completely
 		this.acc = 45/g_game.speed;							// the amount of ticks taken to speed up completely
 
-		this.spriteCurrent = [sheet, rect];					// id to current sheet and rect [sheet, rect]
 
 		this.hpAble = false;								// if health has been unlocked yet
 		this.hp = 0;										// current health
@@ -45,6 +44,10 @@ $(document).ready(function() {
 		this.spheres = [];
 
 		this.levelAdjust();
+		
+		this.spriteCurrent = [sheet, rect];					// id to current sheet and rect [sheet, rect]
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	Player.prototype.levelAdjust = function() {
@@ -344,7 +347,7 @@ $(document).ready(function() {
 		if (this.shootRecharge <= 0) {
 			if (this.shooting) {
 				var pos = disDir(this.x, this.y, this.r-40, this.dir);
-				g_game.bullets[g_game.bullets.length] = new Bullet(pos.x, pos.y, 5, this.dir, 15, 0, 1);
+				g_game.bullets[g_game.bullets.length] = new Bullet(pos.x, pos.y, 5, this.dir, 15, this.index, 0, 1);
 				console.log(g_game.bullets[g_game.bullets.length-1]);
 
 				this.shootRecharge = this.shootRechargeRate;

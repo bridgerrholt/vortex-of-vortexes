@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	Bullet = function(x, y, r, dir, speed, sheet, rect) {
+	Bullet = function(x, y, r, dir, speed, parent, sheet, rect) {
 		this.x = x;									// x position
 		this.y = y;									// y position
 		this.rx = this.x-g_game.camera.x;			// x position on screen (real x)
@@ -7,6 +7,7 @@ $(document).ready(function() {
 		this.r = r;									// radius
 		this.dir = dir;								// direction
 		this.speed = speed*g_game.speed;			// the current speed
+		this.parent = parent;						// the index of the one shooting it
 
 		this.active = true;							// if it is active (moving) or not
 		this.released = false;						// if it has made it out of the parent or not
@@ -19,6 +20,8 @@ $(document).ready(function() {
 		this.yOffset = 5;							// y distance from corner to y area of rotation
 
 		this.spriteCurrent = [sheet, rect];			// id to current sheet and rect [sheet, rect]
+		this.index = g_game.objectAmount;
+		g_game.objectAmount++;
 	};
 
 	Bullet.prototype.update = function(id) {

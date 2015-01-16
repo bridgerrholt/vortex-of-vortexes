@@ -2,7 +2,7 @@ $(document).ready(function() {
 	reset = function() {
 		var level = 0;
 
-		g_game.player = new Player(-500, 500, 60, 270, level, 1,0);
+		g_game.player = new Player(-1500, 1500, 60, 270, level, 1,0);
 
 		if (level === 0) {
 			g_game.levelSpheres.push(new LevelSphere(-50, 0, 15, 400, 0, 1, 1, g_game.player.x, g_game.player.y, 3, 1,2));
@@ -14,6 +14,9 @@ $(document).ready(function() {
 
 		g_game.levelSphereSlotSpikys.push(new LevelSphereSlotSpiky(-500, 0, 75, 75, 1000, 180, 0.5, 0, 0, 0, 0, 0, 0, 50, 3, 1));
 		console.log(g_game.levelSphereSlotSpikys[0]);
+
+		g_game.triangleEnemies.push(new TriangleEnemy(-2100, 2100, 47, 0, 315, 0, 10, 200, 3, 3));
+		console.log(g_game.triangleEnemies);
 
 		/*var x1 = -200; var y1 = -200; var x2 = -100; var y2 = 0;
 		g_game.lines = [new Line(x1, y1, x2, y2, g_game.player.r)];
@@ -149,8 +152,8 @@ $(document).ready(function() {
 		}*/
 		for (var i=27; i>=0; i--) {
 			c -= i*i*0.021;
-			if (i === 0) {
-				c = 0.5
+			if (i === 1) {
+				c = 1.9
 			}
 			widths.push(c);
 		}
